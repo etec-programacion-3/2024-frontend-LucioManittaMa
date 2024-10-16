@@ -3,98 +3,79 @@ import './App.css';
 import logo from './UrbanLogo.png';
 
 // Componente Header
-function Header({ isLoggedIn, cartCount }) {
+function Header({ isLoggedIn }) {
   return (
     <header className="App-header">
       <div className="header-content">
         <img src={logo} className="App-logo" alt="logo" />
-        <nav>
-          <ul className="nav-links">
-            <li>
-              {!isLoggedIn ? (
-                <button className="account-button">Account</button>
-              ) : (
-                <button className="logout-button">Cerrar Sesión</button>
-              )}
-            </li>
-            {isLoggedIn && (
-              <li>
-                <div className="cart">
-                  <span>Carrito ({cartCount})</span>
-                </div>
-              </li>
-            )}
-            <li>
-              <button className="search-button">🔍</button>
-            </li>
-          </ul>
-        </nav>
+        <div className="search-bar">
+          <input type="text" placeholder="Search" className="search-input" />
+          <button className="search-button">Search</button>
+        </div>
+        <div className="auth-buttons">
+          <button className="auth-button">Sign In</button>
+          <button className="auth-button">Sign Up</button>
+        </div>
       </div>
     </header>
   );
 }
 
-// Componente Slider
-function Slider() {
+// Componente Marcas
+function BrandLogos() {
+  const brands = [
+    { name: 'Adidas', logo: './assets/logos_marcas/adidas.png' },
+    { name: 'DC Shoes', logo: 'dc.png' },
+    { name: 'Nike', logo: 'nike.png' },
+    { name: 'Puma', logo: 'puma.png' },
+    { name: 'Vans', logo: 'vans.png' },
+  ];
+
   return (
-    <div className="slider">
-      <h2>Zapatillas Destacadas</h2>
-      <div className="slider-images">
-        <div className="slide" style={{ backgroundImage: "url('zapatilla1.jpg')" }}></div>
-        <div className="slide" style={{ backgroundImage: "url('zapatilla2.jpg')" }}></div>
-        <div className="slide" style={{ backgroundImage: "url('zapatilla3.jpg')" }}></div>
-      </div>
+    <div className="brand-logos">
+      {brands.map((brand) => (
+        <div className="brand-logo" key={brand.name}>
+          <img src={brand.logo} alt={brand.name} />
+        </div>
+      ))}
     </div>
   );
 }
 
 // Componente Productos Destacados
-function ProductosDestacados() {
-  const productos = [
-    { id: 1, name: 'Zapatilla 1', price: 100 },
-    { id: 2, name: 'Zapatilla 2', price: 120 },
-    { id: 3, name: 'Zapatilla 3', price: 150 }
+function FeaturedProducts() {
+  const products = [
+    { id: 1, image: './assets/adidas/campus.png', name: 'Zapatilla 1' },
+    { id: 2, image: 'zapatilla2.jpg', name: 'Zapatilla 2' },
+    { id: 3, image: 'zapatilla3.jpg', name: 'Zapatilla 3' },
+    { id: 4, image: 'zapatilla4.jpg', name: 'Zapatilla 4' },
   ];
 
   return (
-    <div className="productos-destacados">
-      <h3>Productos Destacados</h3>
-      <ul>
-        {productos.map(producto => (
-          <li key={producto.id}>
-            {producto.name} - ${producto.price}
-          </li>
+    <div className="featured-products">
+      <h2>PRODUCTOS DESTACADOS</h2>
+      <div className="product-grid">
+        {products.map((product) => (
+          <div className="product-card" key={product.id}>
+            <img src={product.image} alt={product.name} />
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
 
-// Componente Footer
-function Footer() {
-  return (
-    <footer>
-      <p>© 2024 Tienda de Zapatillas. Todos los derechos reservados.</p>
-    </footer>
-  );
-}
-
-// Componente principal App
+// Componente App
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
 
   return (
     <div className="App">
-      <Header isLoggedIn={isLoggedIn} cartCount={cartCount} />
-      <main>
-        <Slider />
-        <ProductosDestacados />
-      </main>
-      <Footer />
+      <Header isLoggedIn={isLoggedIn} />
+      <BrandLogos />
+      <FeaturedProducts />
     </div>
   );
 }
 
 export default App;
-

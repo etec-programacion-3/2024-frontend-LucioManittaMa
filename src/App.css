@@ -1,6 +1,71 @@
 /* App.css */
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #8fc08f; /* Color de fondo similar */
+  padding: 10px 20px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.search-button {
+  padding: 5px 10px;
+  margin-left: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.brand-logos {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.featured-products {
+  padding: 20px;
+}
+
+.product-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.product-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
 /* General Styles */
+
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
