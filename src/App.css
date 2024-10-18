@@ -7,6 +7,41 @@
   padding: 10px 20px;
 }
 
+.brand-logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  flex-wrap: wrap; /* Permite que los logos se ajusten en filas si la pantalla es pequeña */
+}
+
+.brand-logo img {
+  width: 10vw; /* El tamaño del logo será el 10% del ancho de la pantalla */
+  max-width: 150px; /* Limita el tamaño máximo del logo para pantallas muy grandes */
+  min-width: 60px; /* Establece un tamaño mínimo para pantallas muy pequeñas */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+.brand-logo img:hover {
+  transform: scale(1.1); /* Efecto de agrandamiento al pasar el mouse */
+}
+
+/* Media queries para ajustar el tamaño en pantallas muy pequeñas */
+@media (max-width: 768px) {
+  .brand-logo img {
+    width: 15vw; /* En pantallas medianas, aumenta el tamaño de los logos al 15% del ancho de la pantalla */
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-logo img {
+    width: 20vw; /* En pantallas pequeñas, los logos serán el 20% del ancho de la pantalla */
+  }
+}
+
 .search-bar {
   display: flex;
   align-items: center;
@@ -30,6 +65,7 @@
 .auth-buttons {
   display: flex;
   gap: 10px;
+  align-items: end;
 }
 
 .auth-button {

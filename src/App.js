@@ -2,6 +2,20 @@ import React, { useState } from 'react';
 import './App.css';
 import logo from './UrbanLogo.png';
 
+import adidaslogo from './../src/assets/logos_marcas/adidas.png';
+import dclogo from './../src/assets/logos_marcas/dc_logo.png';
+import nikelogo from './../src/assets/logos_marcas/nike_logo.png';
+import pumalogo from './../src/assets/logos_marcas/puma_logo.png';
+import vanslogo from './../src/assets/logos_marcas/vans_logo.png';
+//Imagenes de zapatillas DESTACADAS
+import campus from './../src/assets/adidas/campus.png';
+import forum_low from './../src/assets/adidas/forum_low.png';
+import lwst from './../src/assets/adidas/lwst.png';
+import samba_og from './../src/assets/adidas/samba_og.png';
+import superstar from './../src/assets/adidas/superstar.png';
+import superstar_xlg from './../src/assets/adidas/superstar_xlg.png';
+
+
 // Componente Header
 function Header({ isLoggedIn }) {
   return (
@@ -24,11 +38,11 @@ function Header({ isLoggedIn }) {
 // Componente Marcas
 function BrandLogos() {
   const brands = [
-    { name: 'Adidas', logo: './assets/logos_marcas/adidas.png' },
-    { name: 'DC Shoes', logo: 'dc.png' },
-    { name: 'Nike', logo: 'nike.png' },
-    { name: 'Puma', logo: 'puma.png' },
-    { name: 'Vans', logo: 'vans.png' },
+    { name: 'Adidas', logo: [adidaslogo]} ,
+    { name: 'DC Shoes', logo: [dclogo] },
+    { name: 'Nike', logo: [nikelogo] },
+    { name: 'Puma', logo: [pumalogo] },
+    { name: 'Vans', logo: [vanslogo] },
   ];
 
   return (
@@ -45,10 +59,10 @@ function BrandLogos() {
 // Componente Productos Destacados
 function FeaturedProducts() {
   const products = [
-    { id: 1, image: './assets/adidas/campus.png', name: 'Zapatilla 1' },
-    { id: 2, image: 'zapatilla2.jpg', name: 'Zapatilla 2' },
-    { id: 3, image: 'zapatilla3.jpg', name: 'Zapatilla 3' },
-    { id: 4, image: 'zapatilla4.jpg', name: 'Zapatilla 4' },
+    { id: 1, image: [campus], name: 'Campus2000s' },
+    { id: 2, image: [samba_og], name: 'Samba'  },
+    { id: 3, image: [superstar], name: 'Superstar'  },
+    { id: 4, image: [forum_low], name: 'Forum Low'  },
   ];
 
   return (
