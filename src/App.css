@@ -1,115 +1,15 @@
-/* App.css */
-.App-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #8fc08f; /* Color de fondo similar */
-  padding: 10px 20px;
-}
-
-.brand-logos {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 20px;
-  background-color: #f0f0f0;
-  flex-wrap: wrap; /* Permite que los logos se ajusten en filas si la pantalla es pequeña */
-}
-
-.brand-logo img {
-  width: 10vw; /* El tamaño del logo será el 10% del ancho de la pantalla */
-  max-width: 150px; /* Limita el tamaño máximo del logo para pantallas muy grandes */
-  min-width: 60px; /* Establece un tamaño mínimo para pantallas muy pequeñas */
-  height: auto; /* Mantiene la proporción de la imagen */
-  margin: 10px;
-  transition: transform 0.3s ease;
-}
-
-.brand-logo img:hover {
-  transform: scale(1.1); /* Efecto de agrandamiento al pasar el mouse */
-}
-
-/* Media queries para ajustar el tamaño en pantallas muy pequeñas */
-@media (max-width: 768px) {
-  .brand-logo img {
-    width: 15vw; /* En pantallas medianas, aumenta el tamaño de los logos al 15% del ancho de la pantalla */
-  }
-}
-
-@media (max-width: 480px) {
-  .brand-logo img {
-    width: 20vw; /* En pantallas pequeñas, los logos serán el 20% del ancho de la pantalla */
-  }
-}
-
-.search-bar {
-  display: flex;
-  align-items: center;
-}
-
-.search-input {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.search-button {
-  padding: 5px 10px;
-  margin-left: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-.auth-buttons {
-  display: flex;
-  gap: 10px;
-  align-items: end;
-}
-
-.auth-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.brand-logos {
-  display: flex;
-  justify-content: space-around;
-  padding: 20px;
-  background-color: #f0f0f0;
-}
-
-.featured-products {
-  padding: 20px;
-}
-
-.product-grid {
-  display: flex;
-  justify-content: space-around;
-}
-
-.product-card img {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
 /* General Styles */
-
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
 }
 
+header, .brand-logos, .featured-products, footer {
+  padding: 20px;
+}
+
 header {
-  background-color: #e0f7fa; /* Verde agua claro */
-  padding: 10px 0;
+  background-color: #8fc08f; /* Color de fondo original */
   position: sticky;
   top: 0;
   width: 100%;
@@ -127,30 +27,91 @@ header {
   height: 40px;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-}
-
-.account-button,
-.logout-button,
-.search-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #00796b; /* Verde más oscuro */
-}
-
-.cart {
+.search-bar, .auth-buttons {
   display: flex;
   align-items: center;
 }
 
-.search-button {
-  font-size: 20px;
+.search-input, .auth-button {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
+.search-input {
+  border: 1px solid #ccc;
+}
+
+.search-button, .auth-button {
+  margin-left: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.auth-buttons {
+  gap: 10px;
+}
+
+.brand-logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f0f0f0;
+  flex-wrap: wrap;
+}
+
+.brand-logo img {
+  width: 10vw; /* El tamaño del logo será el 10% del ancho de la pantalla */
+  max-width: 150px;
+  min-width: 60px;
+  height: auto;
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+.brand-logo img:hover {
+  transform: scale(1.1);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .brand-logo img {
+    width: 15vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-logo img {
+    width: 20vw;
+  }
+}
+
+.featured-products .product-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.product-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+  background-color: #004d40; /* Verde oscuro */
+  color: white;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Slider */
 .slider {
   margin: 20px 0;
 }
@@ -173,9 +134,9 @@ header {
   transform: scale(1.1);
 }
 
+/* Productos destacados */
 .productos-destacados {
   text-align: left;
-  margin: 20px;
 }
 
 .productos-destacados h3 {
@@ -189,15 +150,4 @@ header {
 
 .productos-destacados li {
   margin-bottom: 10px;
-}
-
-footer {
-  background-color: #004d40; /* Verde oscuro */
-  color: white;
-  padding: 10px 0;
-  position: relative;
-}
-
-footer p {
-  margin: 0;
 }
