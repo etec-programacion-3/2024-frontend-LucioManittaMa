@@ -1,39 +1,44 @@
+// AdidasPage.js
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import Header from './Header';
+import './App.css';
 
-const shoeData = {
-  Adidas: [
-    { id: 1, name: 'Campus 2000s', image: './../src/assets/adidas/campus.png' },
-    { id: 2, name: 'Samba OG', image: './../src/assets/adidas/samba_og.png' },
-  ],
-  Nike: [
-    { id: 1, name: 'Air Max', image: './../src/assets/nike/air_max.png' },
-    { id: 2, name: 'Cortez', image: './../src/assets/nike/cortez.png' },
-  ],
-  // Agrega más marcas y modelos aquí
-};
+// Importa las imágenes directamente
+import campus from './assets/adidas/campus.png';
+import forumLow from './assets/adidas/forum_low.png';
+import lwst from './assets/adidas/lwst.png';
+import sambaOg from './assets/adidas/samba_og.png';
+import superstar from './assets/adidas/superstar.png';
 
-const ShoeModels = () => {
-  const { brand } = useParams(); 
-  const models = shoeData[brand]; 
+const adidasProducts = [
+  { id: 1, image: campus, name: 'Campus 2000s', description: 'Clásico y cómodo', price: '$120' },
+  { id: 2, image: forumLow, name: 'Forum Low', description: 'Estilo retro', price: '$140' },
+  { id: 3, image: lwst, name: 'Lwst', description: 'Innovador y ligero', price: '$130' },
+  { id: 4, image: sambaOg, name: 'Samba OG', description: 'Icónico diseño', price: '$115' },
+  { id: 5, image: superstar, name: 'Superstar', description: 'Eterna leyenda', price: '$125' },
+];
 
-  if (!models) {
-    return <h2>No hay modelos disponibles para esta marca</h2>;
-  }
-
+function AdidasPage() {
   return (
-    <div>
-      <h1>Modelos de {brand}</h1>
-      <div className="shoe-grid">
-        {models.map((model) => (
-          <div key={model.id} className="shoe-card">
-            <img src={model.image} alt={model.name} />
-            <p>{model.name}</p>
-          </div>
-        ))}
+    <div className="brand-page">
+      <Header />
+      <div className="brand-content">
+        <h1>Adidas - Productos</h1>
+        <div className="product-list">
+          {adidasProducts.map((product) => (
+            <div className="product-card" key={product.id}>
+              <img src={product.image} alt={product.name} className="product-image" />
+              <div className="product-info">
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+                <p className="product-price">{product.price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
-};
+}
 
-export default ShoeModels;
+export default AdidasPage;

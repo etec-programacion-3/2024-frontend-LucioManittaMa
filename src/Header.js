@@ -15,9 +15,6 @@ function Header() {
         <div className="nav-auth">
           <div className="nav-links">
             <Link to="/">Inicio</Link>
-            <Link to="/models/Adidas">Adidas</Link>
-            <Link to="/models/Nike">Nike</Link>
-            {/* Más links si es necesario */}
           </div>
           <div className="auth-buttons">
             <button className="auth-button">Sign In</button>
