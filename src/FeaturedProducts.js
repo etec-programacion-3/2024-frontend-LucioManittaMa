@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import campus from './../src/assets/adidas/campus.png';
 import forum_low from './../src/assets/adidas/forum_low.png';
 import samba_og from './../src/assets/adidas/samba_og.png';
