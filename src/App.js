@@ -5,6 +5,10 @@ import Header from './Header';
 import BrandLogos from './BrandLogos';
 import FeaturedProducts from './FeaturedProducts';
 import ShoeModels from './ShoeModels';
+import ShoeModelsNike from './ShoeModelsNike';
+import ShoeModelsDC from './ShoeModelsDC';
+import ShoeModelsPuma from './ShoeModelsPuma';
+import ShoeModelsVans from './ShoeModelsVans';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -15,7 +19,12 @@ function App() {
         <Header isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path="/" element={<><BrandLogos /><FeaturedProducts /></>} />
-          <Route path="/models/:brand" element={<ShoeModels />} />
+          <Route path="/models/Adidas" element={<ShoeModels />} />
+          <Route path="/models/Nike" element={<ShoeModelsNike />} />
+          <Route path="/models/Dc" element={<ShoeModelsDC />} />
+          <Route path="/models/Puma" element={<ShoeModelsPuma />} />
+          <Route path="/models/Vans" element={<ShoeModelsVans />} />
+          
         </Routes>
       </div>
     </Router>

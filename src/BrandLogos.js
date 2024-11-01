@@ -9,7 +9,7 @@ import vanslogo from './../src/assets/logos_marcas/vans_logo.png';
 function BrandLogos() {
   const brands = [
     { name: 'Adidas', logo: adidaslogo, path: '/models/Adidas' },
-    { name: 'DC Shoes', logo: dclogo, path: '/models/DC' },
+    { name: 'DC', logo: dclogo, path: '/models/DC' },
     { name: 'Nike', logo: nikelogo, path: '/models/Nike' },
     { name: 'Puma', logo: pumalogo, path: '/models/Puma' },
     { name: 'Vans', logo: vanslogo, path: '/models/Vans' },

@@ -17,7 +17,6 @@ const adidasProducts = [
   { id: 4, image: sambaOg, name: 'Samba OG', description: 'Icónico diseño', price: '$115' },
   { id: 5, image: superstar, name: 'Superstar', description: 'Eterna leyenda', price: '$125' },
 ];
-
 function AdidasPage() {
   return (
     <div className="brand-page">
@@ -42,3 +41,4 @@ function AdidasPage() {
 }
 
 export default AdidasPage;
+
