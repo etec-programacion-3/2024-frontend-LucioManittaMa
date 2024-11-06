@@ -101,16 +101,17 @@ header {
   text-align: left;
   border: none; 
   border-radius: 10px;
-  height: max-content;
+  height: 250px;
   width: 233.9px;
   padding: 6px;
   margin: 15px;
   background-color: rgb(251, 255, 251);
   transition: 0.7s;
-  flex-grow: 1;
   margin-bottom: 20px;
   box-shadow: 1px 1px 8px rgb(151, 149, 149);
   padding: 10px;
+ 
+
 }
 
 /* Footer */

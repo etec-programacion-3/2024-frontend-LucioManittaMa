@@ -21,9 +21,10 @@ const vansProducts = [
 function VansPage() {
   return (
     <div className="brand-page">
+      <h1>Vans - Productos</h1>
       <Header />
       <div className="brand-content">
-        <h1>Puma - Productos</h1>
+        <h1>VANS</h1>
         <div className="product-list">
           {vansProducts.map((product) => (
             <div className="product-card" key={product.id}>

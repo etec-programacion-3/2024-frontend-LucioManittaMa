@@ -16,8 +16,9 @@ const DcProducts = [
     return (
       <div className="brand-page">
         <Header />
+        <h2>DC</h2>
         <div className="brand-content">
-          <h1>DC - Productos</h1>
+          <h1>DC</h1>
           <div className="product-list">
             {DcProducts.map((product) => (
               <div className="product-card" key={product.id}>

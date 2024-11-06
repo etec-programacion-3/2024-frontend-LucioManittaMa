@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {  } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './Header';
@@ -11,12 +11,10 @@ import ShoeModelsPuma from './ShoeModelsPuma';
 import ShoeModelsVans from './ShoeModelsVans';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <Router>
       <div className="App">
-        <Header isLoggedIn={isLoggedIn} />
+        <Header />
         <Routes>
           <Route path="/" element={<><BrandLogos /><FeaturedProducts /></>} />
           <Route path="/models/Adidas" element={<ShoeModels />} />

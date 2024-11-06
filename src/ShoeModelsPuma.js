@@ -20,9 +20,10 @@ const pumaProducts = [
 function PumaPage() {
   return (
     <div className="brand-page">
+      <h1>Puma - Productos</h1>
       <Header />
       <div className="brand-content">
-        <h1>Puma - Productos</h1>
+        <h1>PUMA</h1>
         <div className="product-list">
           {pumaProducts.map((product) => (
             <div className="product-card" key={product.id}>

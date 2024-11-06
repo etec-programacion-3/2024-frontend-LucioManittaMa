@@ -20,9 +20,10 @@ const adidasProducts = [
 function AdidasPage() {
   return (
     <div className="brand-page">
+      <h2>ADIDAS</h2>
       <Header />
       <div className="brand-content">
-        <h1>Adidas - Productos</h1>
+        <h1>ADIDAS</h1>
         <div className="product-list">
           {adidasProducts.map((product) => (
             <div className="product-card" key={product.id}>

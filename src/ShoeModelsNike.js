@@ -21,9 +21,10 @@ const nikeProducts = [
   function NikePage() {
     return (
       <div className="brand-page">
+        <h2>PRODUCTOS DESTACADOS</h2>
         <Header />
         <div className="brand-content">
-          <h1>Adidas - Productos</h1>
+          <h1>NIKE</h1>
           <div className="product-list">
             {nikeProducts.map((product) => (
               <div className="product-card" key={product.id}>
