@@ -1,3 +1,4 @@
+// Header.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from './UrbanLogo.png';
@@ -11,14 +12,13 @@ function Header() {
           <input type="text" placeholder="Search" className="search-input" />
           <button className="search-button">Search</button>
         </div>
-        {/* Contenedor para los enlaces y botones de autenticación */}
         <div className="nav-auth">
           <div className="nav-links">
             <Link to="/">Inicio</Link>
           </div>
           <div className="auth-buttons">
-            <button className="auth-button">Sign In</button>
-            <button className="auth-button">Sign Up</button>
+            <Link to="/login" ><button className="auth-button">Sign In</button></Link>
+            <Link to="/signup"><button className="auth-button">Sign Up</button></Link>
           </div>
         </div>
       </div>
@@ -27,3 +27,4 @@ function Header() {
 }
 
 export default Header;
+
