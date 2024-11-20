@@ -41,7 +41,7 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center space-x-8">
             <Link to="/" className="text-gray-700 hover:text-green-800">Home</Link>
-            <Link to="/products" className="text-gray-700 hover:text-green-800">Products</Link>
+            <Link to="/products" className="text-gray-700 hover:text-green-800">Productos</Link>
           </div>
 
           <div className="flex items-center space-x-6">

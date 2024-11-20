@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-hot-toast';
 import { Mail, Lock } from 'lucide-react';
-import { API_URL } from '../config/api';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -26,29 +25,26 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      const data = await response.json();
-      console.log('Respuesta del login:', data);
-
-      if (response.ok && data.token) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        await login(formData.email, formData.contraseña);
-        toast.success('Inicio de sesión exitoso');
-        navigate('/');
-      } else {
-        throw new Error(data.message || 'Error en el inicio de sesión');
-      }
+      console.log('Iniciando proceso de login...');
+      await login(formData.email, formData.contraseña);
+      toast.success('Inicio de sesión exitoso');
+      console.log('Preparando navegación...');
+      
+      // Aumentamos el delay y verificamos el estado antes de navegar
+      setTimeout(() => {
+        const token = localStorage.getItem('token');
+        console.log('Token antes de navegar:', !!token);
+        if (token) {
+          console.log('Navegando a home...');
+          navigate('/', { replace: true });
+        } else {
+          console.error('No se encontró token después del login');
+          toast.error('Error en la autenticación');
+        }
+      }, 500);
     } catch (error) {
-      console.error('Error en login:', error);
-      toast.error('Error en el inicio de sesión');
+      console.error('Error detallado en login:', error);
+      toast.error(error instanceof Error ? error.message : 'Error en el inicio de sesión');
     } finally {
       setIsLoading(false);
     }

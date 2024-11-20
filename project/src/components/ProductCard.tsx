@@ -55,7 +55,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-800">{product.nombre}</h3>
         <p className="text-gray-600 mt-1">Stock disponible: {product.stock}</p>
-        <p className="text-sm text-gray-500 mt-1">Sin descripción disponible</p>
+        <p className="text-sm text-gray-500 mt-1">{product.descripción}</p>
         <p className="text-green-600 font-bold mt-2">${Number(product.precio).toFixed(2)}</p>
         
         {token ? (

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
 import { Navigate } from 'react-router-dom';
-import { API_URL, fetchWithAuth } from '../config/api';
+import axios from 'axios';
+import { API_URL } from '../config/api';
 
 interface Category {
   category_id: number;
@@ -27,11 +28,12 @@ export default function AdminProducts() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetchWithAuth('/categories');
-        if (response.ok) {
-          const data = await response.json();
-          setCategories(data);
-        }
+        const response = await axios.get(`${API_URL}/categories`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+        setCategories(response.data);
       } catch (error) {
         console.error('Error al cargar categorías:', error);
         toast.error('Error al cargar las categorías');
@@ -59,32 +61,28 @@ export default function AdminProducts() {
     setIsLoading(true);
 
     try {
-      const response = await fetchWithAuth('/products', {
-        method: 'POST',
-        body: JSON.stringify(formData)
+      await axios.post(`${API_URL}/products`, formData, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        }
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success('Producto agregado exitosamente');
-        setFormData({
-          nombre: '',
-          descripción: '',
-          precio: '',
-          stock: '',
-          category_id: '',
-          imagen: ''
-        });
-      } else {
-        toast.error(data.message || 'Error al crear el producto');
-      }
-    } catch (error) {
+      toast.success('Producto agregado exitosamente');
+      setFormData({
+        nombre: '',
+        descripción: '',
+        precio: '',
+        stock: '',
+        category_id: '',
+        imagen: ''
+      });
+    } catch (error: any) {
       console.error('Error al crear producto:', error);
-      if (error instanceof Error && error.message === 'Sesión expirada') {
-        navigate('/login');
+      if (error.response?.status === 401) {
+        Navigate({ to: '/login', replace: true });
       } else {
-        toast.error('Error al conectar con el servidor');
+        toast.error(error.response?.data?.message || 'Error al conectar con el servidor');
       }
     } finally {
       setIsLoading(false);
@@ -118,14 +116,14 @@ export default function AdminProducts() {
             </div>
 
             <div>
-              <label htmlFor="descripcion" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="descripción" className="block text-sm font-medium text-gray-700">
                 Descripción
               </label>
               <textarea
-                id="descripcion"
-                name="descripcion"
+                id="descripción"
+                name="descripción"
                 required
-                value={formData.descripcion}
+                value={formData.descripción}
                 onChange={handleChange}
                 rows={3}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
