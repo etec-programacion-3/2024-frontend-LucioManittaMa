@@ -19,10 +19,10 @@ export const useFavorites = create<FavoritesStore>()(
         })),
       removeItem: (productId) =>
         set((state) => ({
-          items: state.items.filter((item) => item.id !== productId),
+          items: state.items.filter((item) => item.product_id !== productId),
         })),
       isFavorite: (productId) =>
-        get().items.some((item) => item.id === productId),
+        get().items.some((item) => item.product_id === productId),
     }),
     {
       name: 'favorites-storage',

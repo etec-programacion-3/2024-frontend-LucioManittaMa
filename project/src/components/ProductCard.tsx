@@ -3,6 +3,8 @@ import { Product } from '../types';
 import { useCart } from '../store/useCart';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import { useFavorites } from '../store/useFavorites';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 interface ProductCardProps {
   product: Product;
@@ -15,6 +17,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const addToCart = useCart((state) => state.addItem);
   const token = localStorage.getItem('token');
+  const { addItem, removeItem, isFavorite } = useFavorites();
+  const isProductFavorite = isFavorite(product.product_id);
 
   const handleAction = () => {
     if (!token) {
@@ -39,6 +43,14 @@ export default function ProductCard({ product }: ProductCardProps) {
     toast.success('Producto agregado al carrito');
   };
 
+  const handleFavoriteClick = () => {
+    if (isProductFavorite) {
+      removeItem(product.product_id);
+    } else {
+      addItem(product);
+    }
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="relative">
@@ -51,6 +63,17 @@ export default function ProductCard({ product }: ProductCardProps) {
             target.src = 'https://via.placeholder.com/400?text=Error+Loading+Image';
           }}
         />
+        
+        <button 
+          onClick={handleFavoriteClick}
+          className="absolute top-2 right-2 p-2"
+        >
+          {isProductFavorite ? (
+            <FaHeart className="text-red-500" />
+          ) : (
+            <FaRegHeart className="text-gray-400 hover:text-red-500" />
+          )}
+        </button>
       </div>
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-800">{product.nombre}</h3>

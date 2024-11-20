@@ -17,10 +17,14 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     );
   }
 
-  // Verificar autenticación y rol de admin para rutas administrativas
-  if (!isAuthenticated || (location.pathname.startsWith('/admin') && user?.rol !== 'admin')) {
+  if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
+  // Solo verificar rol admin en rutas administrativas
+  if (location.pathname.startsWith('/admin') && user?.rol !== 'admin') {
+    return <Navigate to="/" replace />;
+  }
+
   return <>{children}</>;
-} 
+}

@@ -1,4 +1,4 @@
-import { useAuth } from '../store/useAuth';
+import { useAuth } from '../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 
 export default function Account() {

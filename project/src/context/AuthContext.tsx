@@ -7,6 +7,8 @@ interface User {
   nombre: string;
   email: string;
   rol: string;
+  dirección?: string;
+  teléfono?: string;
 }
 
 interface AuthContextType {
